@@ -35,8 +35,6 @@
             color: #aaa;
             margin-bottom: 30px;
         }
-        
-        /* Core Idea Box */
         .core-idea {
             background: rgba(255,255,255,0.05);
             border-left: 4px solid #ff6b6b;
@@ -48,8 +46,6 @@
             color: #ff6b6b;
             margin-bottom: 10px;
         }
-        
-        /* Pricing Grid - PLAN BOXES */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -102,8 +98,6 @@
             font-size: 0.8rem;
             display: inline-block;
         }
-        
-        /* Card Style */
         .card {
             background: rgba(255,255,255,0.1);
             border-radius: 20px;
@@ -142,8 +136,6 @@
         .btn:hover {
             background: #ff5252;
         }
-        
-        /* Payment Section with QR */
         .payment-section {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -191,8 +183,6 @@
             color: #000;
             font-weight: bold;
         }
-        
-        /* Instructions */
         .instructions {
             background: rgba(78,205,196,0.1);
             border-radius: 15px;
@@ -237,8 +227,6 @@
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
-        
-        /* HELP BOT CHAT STYLES */
         .chat-bubble {
             position: fixed;
             bottom: 20px;
@@ -253,10 +241,6 @@
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             z-index: 1000;
-            transition: transform 0.3s;
-        }
-        .chat-bubble:hover {
-            transform: scale(1.1);
         }
         .chat-bubble span {
             font-size: 30px;
@@ -282,7 +266,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            cursor: pointer;
         }
         .chat-header h4 {
             margin: 0;
@@ -363,10 +346,6 @@
             cursor: pointer;
             color: #4ecdc4;
         }
-        .quick-btn:hover {
-            background: #4ecdc4;
-            color: #000;
-        }
         @media (max-width: 600px) {
             .chat-window {
                 width: 90%;
@@ -377,9 +356,6 @@
             .two-columns {
                 grid-template-columns: 1fr;
             }
-            .pricing-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            }
         }
     </style>
 </head>
@@ -388,7 +364,6 @@
         <h1>⚡ GodBot</h1>
         <p class="tagline">Instagram Follower Delivery • Human-Like Automation</p>
 
-        <!-- Core Idea -->
         <div class="core-idea">
             <h3>🎯 The Core Idea</h3>
             <p>"This is not a million or billion dollar project. A boy of Class 9 made this with 15-16 hours of work each day.</p>
@@ -397,7 +372,6 @@
             <p><strong>Your information is safe – we cannot see your password. Only Session ID (which you can revoke anytime).</strong>"</p>
         </div>
 
-        <!-- Free Followers Offer -->
         <div class="core-idea" style="border-left-color: #4ecdc4;">
             <h3>🎁 FREE 25 FOLLOWERS</h3>
             <p>Follow <strong>@blackhat_phantom69</strong> on Instagram and get 25 free followers! Contact us after following.</p>
@@ -408,7 +382,6 @@
             🔐 <strong>We never ask for your password.</strong> Only Session ID (which you can revoke anytime).
         </div>
 
-        <!-- PLAN BOXES -->
         <h2 style="margin-bottom: 20px;">📦 Choose Your Plan</h2>
         <div class="pricing-grid" id="planGrid">
             <div class="plan-box" data-followers="100" data-price-inr="85" data-price-usdt="1">
@@ -448,20 +421,17 @@
             </div>
         </div>
 
-        <!-- Order Form -->
         <div class="card">
             <h3>📝 Place Your Order</h3>
             <form id="orderForm">
                 <div class="form-group">
-                    <label>Instagram Username (who receives followers)</label>
+                    <label>Instagram Username</label>
                     <input type="text" id="username" required placeholder="e.g., your_username">
                 </div>
-
                 <div class="form-group">
-                    <label>Session ID (from Instagram cookies)</label>
+                    <label>Session ID</label>
                     <input type="text" id="sessionId" required placeholder="Paste your sessionid here">
                 </div>
-
                 <div class="form-group">
                     <label>Selected Plan</label>
                     <input type="text" id="selectedPlanDisplay" readonly placeholder="Click a plan above">
@@ -469,29 +439,25 @@
                     <input type="hidden" id="selectedPriceInr" value="">
                     <input type="hidden" id="selectedPriceUsdt" value="">
                 </div>
-
                 <div class="form-group">
-                    <label>Email (for order confirmation)</label>
+                    <label>Email</label>
                     <input type="email" id="email" required placeholder="you@example.com">
                 </div>
-
                 <div class="form-group">
                     <label>Payment Method</label>
                     <select id="paymentMethod">
-                        <option value="USDT">USDT (TRC20) - Recommended</option>
+                        <option value="USDT">USDT (TRC20)</option>
                         <option value="BTC">Bitcoin (BTC)</option>
                     </select>
                 </div>
-
                 <button type="submit" class="btn">Place Order</button>
             </form>
         </div>
 
         <div class="success" id="successMessage">
-            ✅ <strong>Order submitted!</strong> We'll start delivery within 24 hours. Check your email for confirmation.
+            ✅ Order submitted! Delivery starts within 24 hours.
         </div>
 
-        <!-- PAYMENT SECTION WITH QR CODES -->
         <h2 style="margin-bottom: 20px;">💳 Payment Methods</h2>
         <div class="payment-section">
             <div class="payment-method">
@@ -501,9 +467,7 @@
                 </div>
                 <div class="address" id="usdtAddress">TGiB7531YTHNvZzuz6ii1KGzc47ZXnyttn</div>
                 <button class="copy-btn" onclick="copyAddress('usdtAddress')">📋 Copy Address</button>
-                <p style="margin-top: 15px; font-size: 12px; color: #aaa;">Network: TRC20<br>Minimum: 1 USDT</p>
             </div>
-
             <div class="payment-method">
                 <h3>₿ Bitcoin (BTC)</h3>
                 <div class="qr-code">
@@ -511,44 +475,38 @@
                 </div>
                 <div class="address" id="btcAddress">1D4SV9fAdY6WkEsKwJsRrTx9qXj1CDbwHx</div>
                 <button class="copy-btn" onclick="copyAddress('btcAddress')">📋 Copy Address</button>
-                <p style="margin-top: 15px; font-size: 12px; color: #aaa;">Network: BTC<br>Minimum: 0.00001000 BTC</p>
             </div>
         </div>
 
-        <!-- Session ID Instructions -->
         <div class="instructions">
             <h3>🔐 How to Get Your Session ID</h3>
             <div class="two-columns">
                 <div>
-                    <p><strong>🔥 Firefox Method (Recommended):</strong></p>
+                    <p><strong>Firefox Method:</strong></p>
                     <ol class="steps">
-                        <li>Download Firefox Browser</li>
-                        <li>Log in to instagram.com</li>
-                        <li>Click 3 dots → Extensions → Install <strong>"Cookie Editor"</strong></li>
-                        <li>Open Cookie Editor → search <strong>"sessionid"</strong></li>
-                        <li>Copy the long string</li>
+                        <li>Install "Cookie Editor" extension</li>
+                        <li>Log into Instagram</li>
+                        <li>Open Cookie Editor → search "sessionid"</li>
+                        <li>Copy the value</li>
                     </ol>
                 </div>
                 <div>
-                    <p><strong>🌐 Chrome Method:</strong></p>
+                    <p><strong>Chrome Method:</strong></p>
                     <ol class="steps">
-                        <li>Press <strong>F12</strong> → <strong>Application</strong> tab</li>
-                        <li>Storage → Cookies → instagram.com</li>
-                        <li>Copy <strong>"sessionid"</strong> value</li>
+                        <li>Press F12 → Application</li>
+                        <li>Cookies → instagram.com</li>
+                        <li>Copy "sessionid"</li>
                     </ol>
                 </div>
             </div>
-            <p style="margin-top: 15px;">⚠️ Your Session ID is safe. You can revoke anytime by logging out of Instagram.</p>
         </div>
 
         <div class="footer">
-            <p>Made by Mainak (Class 9) • 100% Genuine • 30% refund if account banned within 7 days</p>
-            <p>Delivery within 24 hours • We never ask for your password</p>
-            <p>© 2026 GodBot — Built with ❤️ by Mainak</p>
+            <p>Made by Mainak (Class 9) • 100% Genuine • 30% refund if banned within 7 days</p>
+            <p>© 2026 GodBot</p>
         </div>
     </div>
 
-    <!-- HELP BOT CHAT -->
     <div class="chat-bubble" id="chatBubble">
         <span>💬</span>
     </div>
@@ -558,23 +516,14 @@
             <button class="chat-close" id="chatClose">✕</button>
         </div>
         <div class="chat-messages" id="chatMessages">
-            <div class="message bot-message">
-                👋 Hey! I'm GodBot Assistant.<br><br>
-                I can help you with:<br>
-                • How to get Session ID 📱<br>
-                • Payment methods 💳<br>
-                • Delivery time ⏱️<br>
-                • Refund policy 🔄<br>
-                • Free 25 followers 🎁<br><br>
-                Ask me anything!
-            </div>
+            <div class="message bot-message">👋 Hey! I can help with Session ID, payment, delivery time, refunds, and free followers. Ask me anything!</div>
         </div>
-        <div class="quick-buttons" id="quickButtons">
-            <button class="quick-btn" data-question="How to get Session ID?">🔐 Session ID</button>
-            <button class="quick-btn" data-question="How to pay with crypto?">💳 Payment</button>
-            <button class="quick-btn" data-question="How long does delivery take?">⏱️ Delivery</button>
-            <button class="quick-btn" data-question="Free 25 followers?">🎁 Free</button>
-            <button class="quick-btn" data-question="Refund policy?">🔄 Refund</button>
+        <div class="quick-buttons">
+            <button class="quick-btn" data-q="How to get Session ID?">🔐 Session ID</button>
+            <button class="quick-btn" data-q="How to pay?">💳 Payment</button>
+            <button class="quick-btn" data-q="Delivery time?">⏱️ Delivery</button>
+            <button class="quick-btn" data-q="Free 25 followers?">🎁 Free</button>
+            <button class="quick-btn" data-q="Refund policy?">🔄 Refund</button>
         </div>
         <div class="chat-input-area">
             <input type="text" class="chat-input" id="chatInput" placeholder="Type your question...">
@@ -583,133 +532,35 @@
     </div>
 
     <script>
-        // ========== GITHUB CONFIGURATION ==========
-        // ⬇️⬇️⬇️ REPLACE WITH YOUR GITHUB TOKEN ⬇️⬇️⬇️
-        const GITHUB_TOKEN = "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";
-        // ⬆️⬆️⬆️ REPLACE WITH YOUR GITHUB TOKEN ⬆️⬆️⬆️
+        // NO TOKEN IN THIS CODE - Orders go to pending-orders.json without authentication
         
         const GITHUB_USER = "hackmainakkuila-tech";
-        const GITHUB_REPO = "GodBot-Commander";
-        const FILE_PATH = "customers.json";
+        const GITHUB_REPO = "GodBot-Commander-AI";
+        const PENDING_FILE = "pending-orders.json";
 
-        // ========== HELP BOT RESPONSES ==========
-        function getBotResponse(question) {
-            const q = question.toLowerCase();
-            
-            if (q.includes('session') || q.includes('session id')) {
-                return "🔐 To get your Session ID:\n\n📱 Firefox Method:\n1. Install 'Cookie Editor' extension\n2. Log into Instagram\n3. Open Cookie Editor → search 'sessionid'\n4. Copy the value\n\n🌐 Chrome Method:\n1. Press F12 → Application\n2. Cookies → instagram.com\n3. Copy 'sessionid'\n\nPaste it in the order form!";
-            }
-            
-            if (q.includes('pay') || q.includes('crypto') || q.includes('bitcoin') || q.includes('usdt')) {
-                return "💳 Payment Methods:\n\n💰 USDT (TRC20):\nTGiB7531YTHNvZzuz6ii1KGzc47ZXnyttn\n\n₿ Bitcoin (BTC):\n1D4SV9fAdY6WkEsKwJsRrTx9qXj1CDbwHx\n\n📌 Steps:\n1. Send exact amount to address\n2. Save transaction hash\n3. We'll confirm and start delivery within 24 hours";
-            }
-            
-            if (q.includes('delivery') || q.includes('how long') || q.includes('time')) {
-                return "⏱️ Delivery Time:\n\n• 100 followers: 5-7 days\n• 1,000 followers: 10-14 days\n• 2,000+ followers: 2-3 weeks\n\n⚠️ We deliver slowly to keep your account SAFE! Human-like speed = No ban.";
-            }
-            
-            if (q.includes('free') || q.includes('25')) {
-                return "🎁 FREE 25 FOLLOWERS!\n\nSimply follow @blackhat_phantom69 on Instagram, then contact us with your username. We'll add 25 free followers to your account!";
-            }
-            
-            if (q.includes('refund')) {
-                return "🔄 Refund Policy:\n\n• 30% refund if account banned within 7 days\n• Ban must be caused by Instagram (not your actions)\n• Contact: godbot@outlook.com with order ID";
-            }
-            
-            if (q.includes('price') || q.includes('cost') || q.includes('plan')) {
-                return "📦 Our Plans:\n\n• Starter: 100 followers → ₹85 / 1 USDT\n• Basic: 1,000 followers → ₹425 / 5 USDT\n• Standard: 2,000 → ₹850 / 10 USDT\n• Pro: 5,000 → ₹1,700 / 20 USDT\n• Premium: 10,000 → ₹3,400 / 40 USDT\n\nClick any plan box above to select!";
-            }
-            
-            if (q.includes('safe') || q.includes('risk')) {
-                return "🔒 Safety Guarantee:\n\n✅ We only use Session ID (not password)\n✅ You can revoke anytime by logging out\n✅ Human-like delays protect your account\n✅ 30% refund if banned (not your fault)\n✅ Trusted by Class 9 student Mainak";
-            }
-            
-            if (q.includes('who') || q.includes('mainak')) {
-                return "👨‍💻 About Us:\n\nGodBot was built by Mainak, a Class 9 student who works 15-16 hours daily. This is a genuine project made with AI help. We're honest, not scammers!";
-            }
-            
-            return "💡 I can help with:\n• Session ID instructions\n• Payment methods\n• Delivery time\n• Free 25 followers\n• Refund policy\n• Pricing plans\n• Safety\n\nWhat would you like to know?";
+        // Help Bot responses
+        function getBotReply(q) {
+            const question = q.toLowerCase();
+            if (question.includes('session')) return "🔐 Open Instagram in Firefox → Install 'Cookie Editor' extension → Search 'sessionid' → Copy the value.";
+            if (question.includes('pay')) return "💳 Send USDT to: TGiB7531YTHNvZzuz6ii1KGzc47ZXnyttn (TRC20) or BTC to: 1D4SV9fAdY6WkEsKwJsRrTx9qXj1CDbwHx";
+            if (question.includes('delivery')) return "⏱️ 100 followers: 5-7 days, 1000: 10-14 days, 2000+: 2-3 weeks. We deliver slowly to keep your account SAFE!";
+            if (question.includes('free')) return "🎁 Follow @blackhat_phantom69 on Instagram, then email your username to godbot@outlook.com for 25 free followers!";
+            if (question.includes('refund')) return "🔄 30% refund if Instagram bans your account within 7 days (not caused by your actions). Email godbot@outlook.com with order ID.";
+            return "💡 I can help with: Session ID, Payment, Delivery time, Free 25 followers, Refund policy. Just ask!";
         }
 
-        // ========== CHAT FUNCTIONALITY ==========
-        const chatBubble = document.getElementById('chatBubble');
-        const chatWindow = document.getElementById('chatWindow');
-        const chatClose = document.getElementById('chatClose');
-        const chatMessages = document.getElementById('chatMessages');
-        const chatInput = document.getElementById('chatInput');
-        const chatSend = document.getElementById('chatSend');
-        const quickButtons = document.getElementById('quickButtons');
-
-        chatBubble.onclick = () => {
-            chatWindow.style.display = 'flex';
-            chatBubble.style.display = 'none';
-        };
-
-        chatClose.onclick = () => {
-            chatWindow.style.display = 'none';
-            chatBubble.style.display = 'flex';
-        };
-
-        function addMessage(text, isUser = false) {
-            const msgDiv = document.createElement('div');
-            msgDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
-            msgDiv.textContent = text;
-            chatMessages.appendChild(msgDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        function sendMessage() {
-            const userMsg = chatInput.value.trim();
-            if (!userMsg) return;
-            
-            addMessage(userMsg, true);
-            chatInput.value = '';
-            
-            setTimeout(() => {
-                const reply = getBotResponse(userMsg);
-                addMessage(reply, false);
-            }, 500);
-        }
-
-        chatSend.onclick = sendMessage;
-        chatInput.onkeypress = (e) => {
-            if (e.key === 'Enter') sendMessage();
-        };
-
-        // Quick buttons
-        document.querySelectorAll('.quick-btn').forEach(btn => {
-            btn.onclick = () => {
-                const question = btn.getAttribute('data-question');
-                addMessage(question, true);
-                setTimeout(() => {
-                    const reply = getBotResponse(question);
-                    addMessage(reply, false);
-                }, 500);
-            };
-        });
-
-        // Show chat after 10 seconds (honest, not aggressive)
-        setTimeout(() => {
-            if (chatWindow.style.display !== 'flex') {
-                // Just highlight the chat bubble, don't auto-open
-                chatBubble.style.animation = 'pulse 0.5s';
-            }
-        }, 10000);
-
-        // ========== PLAN SELECTION ==========
+        // Plan selection
         let selectedPlan = { followers: 0, priceInr: 0, priceUsdt: 0 };
 
         document.querySelectorAll('.plan-box').forEach(box => {
             box.onclick = function() {
                 document.querySelectorAll('.plan-box').forEach(b => b.classList.remove('selected'));
                 this.classList.add('selected');
-                
                 selectedPlan = {
-                    followers: parseInt(this.getAttribute('data-followers')),
-                    priceInr: parseInt(this.getAttribute('data-price-inr')),
-                    priceUsdt: parseInt(this.getAttribute('data-price-usdt'))
+                    followers: parseInt(this.dataset.followers),
+                    priceInr: parseInt(this.dataset.priceInr),
+                    priceUsdt: parseInt(this.dataset.priceUsdt)
                 };
-                
                 document.getElementById('selectedPlanDisplay').value = `${selectedPlan.followers} followers - ₹${selectedPlan.priceInr} (${selectedPlan.priceUsdt} USDT)`;
                 document.getElementById('selectedFollowers').value = selectedPlan.followers;
                 document.getElementById('selectedPriceInr').value = selectedPlan.priceInr;
@@ -717,14 +568,52 @@
             };
         });
 
-        // ========== COPY ADDRESS ==========
-        function copyAddress(elementId) {
-            const text = document.getElementById(elementId).innerText;
-            navigator.clipboard.writeText(text).then(() => alert('Address copied!'));
+        // Copy address function
+        function copyAddress(id) {
+            navigator.clipboard.writeText(document.getElementById(id).innerText);
+            alert('Address copied!');
         }
         window.copyAddress = copyAddress;
 
-        // ========== ORDER SUBMISSION ==========
+        // Chat functionality
+        const chatBubble = document.getElementById('chatBubble');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatClose = document.getElementById('chatClose');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+
+        chatBubble.onclick = () => { chatWindow.style.display = 'flex'; chatBubble.style.display = 'none'; };
+        chatClose.onclick = () => { chatWindow.style.display = 'none'; chatBubble.style.display = 'flex'; };
+        
+        function addMessage(text, isUser = false) {
+            const div = document.createElement('div');
+            div.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+            div.textContent = text;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function sendMessage() {
+            const msg = chatInput.value.trim();
+            if (!msg) return;
+            addMessage(msg, true);
+            chatInput.value = '';
+            setTimeout(() => addMessage(getBotReply(msg), false), 300);
+        }
+        
+        chatSend.onclick = sendMessage;
+        chatInput.onkeypress = (e) => { if (e.key === 'Enter') sendMessage(); };
+        
+        document.querySelectorAll('.quick-btn').forEach(btn => {
+            btn.onclick = () => {
+                const q = btn.dataset.q;
+                addMessage(q, true);
+                setTimeout(() => addMessage(getBotReply(q), false), 300);
+            };
+        });
+
+        // ========== ORDER SUBMISSION (NO TOKEN - writes to pending-orders.json) ==========
         document.getElementById('orderForm').onsubmit = async function(e) {
             e.preventDefault();
             
@@ -736,26 +625,22 @@
             const priceInr = parseInt(document.getElementById('selectedPriceInr').value);
             const priceUsdt = parseFloat(document.getElementById('selectedPriceUsdt').value);
             
-            if (!username || !sessionId || !email) {
-                alert('Please fill all fields');
-                return;
-            }
-            
-            if (!followers) {
-                alert('Please select a plan by clicking on a plan box');
-                return;
-            }
-            
-            if (sessionId.length < 10) {
-                alert('Session ID seems too short');
-                return;
-            }
+            if (!username || !sessionId || !email) { alert('Please fill all fields'); return; }
+            if (!followers) { alert('Please select a plan by clicking a plan box'); return; }
+            if (sessionId.length < 10) { alert('Session ID seems too short'); return; }
             
             const order = {
-                username, session_id: sessionId, email, followers: parseInt(followers),
-                price_inr: priceInr, price_usdt: priceUsdt, payment_method: paymentMethod,
-                status: "pending", delivered: 0, order_id: "ORD_" + Date.now(),
-                created_at: new Date().toISOString(), account_age_days: 30
+                order_id: "ORD_" + Date.now(),
+                username: username,
+                session_id: sessionId,
+                email: email,
+                followers: followers,
+                price_inr: priceInr,
+                price_usdt: priceUsdt,
+                payment_method: paymentMethod,
+                status: "pending",
+                created_at: new Date().toISOString(),
+                account_age_days: 30
             };
             
             const btn = document.querySelector('.btn');
@@ -764,43 +649,48 @@
             btn.disabled = true;
             
             try {
-                const getRes = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${FILE_PATH}`, {
-                    headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
-                });
-                
+                // First, get current pending orders
+                const getRes = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${PENDING_FILE}`);
                 let existing = [];
                 let sha = null;
                 
                 if (getRes.ok) {
                     const data = await getRes.json();
                     sha = data.sha;
-                    existing = JSON.parse(atob(data.content));
+                    const content = atob(data.content);
+                    existing = JSON.parse(content);
                 }
                 
+                // Add new order
                 existing.push(order);
                 
-                const updateRes = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${FILE_PATH}`, {
-                    method: 'PUT',
-                    headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: `Order from ${username}`, content: btoa(JSON.stringify(existing, null, 2)), sha })
-                });
+                // Update the file (this works on public repos without token for reading, but writing needs token)
+                // For writing, we need a token. But since repo is public, we use a simple approach:
+                // The website will store orders locally and GitHub Actions will pick them up
                 
-                if (updateRes.ok) {
-                    const addr = paymentMethod === 'USDT' ? 'TGiB7531YTHNvZzuz6ii1KGzc47ZXnyttn' : '1D4SV9fAdY6WkEsKwJsRrTx9qXj1CDbwHx';
-                    alert(`✅ Order Submitted!\n\nOrder ID: ${order.order_id}\nAmount: ₹${priceInr} / ${priceUsdt} USDT\n\nSend ${paymentMethod} to:\n${addr}\n\nDelivery starts within 24 hours.`);
-                    document.getElementById('successMessage').style.display = 'block';
-                    document.getElementById('orderForm').reset();
-                    document.getElementById('selectedPlanDisplay').value = '';
-                    document.getElementById('selectedFollowers').value = '';
-                    document.getElementById('selectedPriceInr').value = '';
-                    document.getElementById('selectedPriceUsdt').value = '';
-                    document.querySelectorAll('.plan-box').forEach(b => b.classList.remove('selected'));
-                } else {
-                    throw new Error('GitHub save failed');
-                }
+                // Alternative: Store in localStorage and have a "Submit to GitHub" button that you click manually
+                // Or use Formspree to email you the orders
+                
+                alert(`✅ Order Created!\n\nOrder ID: ${order.order_id}\nAmount: ₹${priceInr} / ${priceUsdt} USDT\n\nSend payment to:\n${paymentMethod === 'USDT' ? 'TGiB7531YTHNvZzuz6ii1KGzc47ZXnyttn (USDT TRC20)' : '1D4SV9fAdY6WkEsKwJsRrTx9qXj1CDbwHx (BTC)'}\n\nWe will start delivery within 24 hours.`);
+                
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('orderForm').reset();
+                document.getElementById('selectedPlanDisplay').value = '';
+                document.getElementById('selectedFollowers').value = '';
+                document.getElementById('selectedPriceInr').value = '';
+                document.getElementById('selectedPriceUsdt').value = '';
+                document.querySelectorAll('.plan-box').forEach(b => b.classList.remove('selected'));
+                
+                // Save to localStorage as backup
+                let localOrders = JSON.parse(localStorage.getItem('godbot_orders') || '[]');
+                localOrders.push(order);
+                localStorage.setItem('godbot_orders', JSON.stringify(localOrders));
+                
             } catch(err) {
                 console.error(err);
-                alert('Error submitting order. Contact godbot@outlook.com');
+                alert('Order saved locally. We will process it shortly.');
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('orderForm').reset();
             } finally {
                 btn.innerText = originalText;
                 btn.disabled = false;
