@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>GodBot - Instagram Follower Service</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #fff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+        .tagline {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+        
+        /* Core Idea Box */
+        .core-idea {
+            background: rgba(255,255,255,0.05);
+            border-left: 4px solid #ff6b6b;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .core-idea h3 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+        
+        /* Pricing Grid - PLAN BOXES */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .plan-box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, background 0.3s;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .plan-box:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.2);
+            border-color: #4ecdc4;
+        }
+        .plan-box.selected {
+            background: rgba(78,205,196,0.2);
+            border: 2px solid #4ecdc4;
+        }
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .plan-followers {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4ecdc4;
+            margin-bottom: 10px;
+        }
+        .plan-price-inr {
+            font-size: 1.5rem;
+            color: #ff6b6b;
+            margin-bottom: 5px;
+        }
+        .plan-price-usdt {
+            font-size: 1rem;
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+        .plan-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+        
+        /* Card Style */
+        .card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ddd;
+            font-weight: 500;
+        }
+        input, select {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            font-size: 16px;
+        }
+        .btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+        }
+        .btn:hover {
+            background: #ff5252;
+        }
+        
+        /* Payment Section with QR */
+        .payment-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .payment-method {
+            background: rgba(0,0,0,0.5);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .payment-method h3 {
+            margin-bottom: 15px;
+            color: #4ecdc4;
+        }
+        .qr-code {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .qr-code img {
+            width: 180px;
+            height: 180px;
+        }
+        .address {
+            background: #000;
+            padding: 10px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            word-break: break-all;
+            margin-top: 10px;
+        }
+        .copy-btn {
+            background: #4ecdc4;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            cursor: pointer;
+            color: #000;
+            font-weight: bold;
+        }
+        
+        /* Instructions */
+        .instructions {
+            background: rgba(78,205,196,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .instructions h3 {
+            color: #4ecdc4;
+            margin-bottom: 10px;
+        }
+        .steps {
+            margin-left: 20px;
+            font-size: 14px;
+        }
+        .steps li {
+            margin-bottom: 8px;
+        }
+        .alert {
+            background: rgba(255,107,107,0.2);
+            border-left: 3px solid #ff6b6b;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .success {
+            background: rgba(78,205,196,0.2);
+            border-left: 3px solid #4ecdc4;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 12px;
+        }
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        /* HELP BOT CHAT STYLES */
+        .chat-bubble {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #4ecdc4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+        .chat-bubble:hover {
+            transform: scale(1.1);
+        }
+        .chat-bubble span {
+            font-size: 30px;
+        }
+        .chat-window {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: #1e1e2e;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+            display: none;
+            flex-direction: column;
+            z-index: 1001;
+            border: 1px solid #333;
+            overflow: hidden;
+        }
+        .chat-header {
+            background: #ff6b6b;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        .chat-header h4 {
+            margin: 0;
+            font-size: 16px;
+        }
+        .chat-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .message {
+            max-width: 80%;
+            padding: 10px 14px;
+            border-radius: 18px;
+            font-size: 14px;
+            word-wrap: break-word;
+        }
+        .bot-message {
+            background: #2a2a3e;
+            color: white;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+        .user-message {
+            background: #4ecdc4;
+            color: #000;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+        .chat-input-area {
+            display: flex;
+            padding: 12px;
+            border-top: 1px solid #333;
+            background: #1a1a2e;
+        }
+        .chat-input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 25px;
+            background: #2a2a3e;
+            color: white;
+            font-size: 14px;
+        }
+        .chat-send {
+            background: #4ecdc4;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 18px;
+            margin-left: 8px;
+            cursor: pointer;
+            color: #000;
+            font-weight: bold;
+        }
+        .quick-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px;
+            border-top: 1px solid #333;
+        }
+        .quick-btn {
+            background: rgba(78,205,196,0.2);
+            border: 1px solid #4ecdc4;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            cursor: pointer;
+            color: #4ecdc4;
+        }
+        .quick-btn:hover {
+            background: #4ecdc4;
+            color: #000;
+        }
+        @media (max-width: 600px) {
+            .chat-window {
+                width: 90%;
+                right: 5%;
+                left: 5%;
+                bottom: 80px;
+            }
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+            .pricing-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚡ GodBot</h1>
+        <p class="tagline">Instagram Follower Delivery • Human-Like Automation</p>
+
+        <!-- Core Idea -->
+        <div class="core-idea">
+            <h3>🎯 The Core Idea</h3>
+            <p>"This is not a million or billion dollar project. A boy of Class 9 made this with 15-16 hours of work each day.</p>
+            <p>Big companies follow fixed mathematical routines and are perfect. Our bot is different. It mimics human behavior: random delays, sleep patterns, unpredictable actions.</p>
+            <p>Built with help from AI and a human (Mainak).</p>
+            <p><strong>Your information is safe – we cannot see your password. Only Session ID (which you can revoke anytime).</strong>"</p>
+        </div>
+
+        <!-- Free Followers Offer -->
+        <div class="core-idea" style="border-left-color: #4ecdc4;">
+            <h3>🎁 FREE 25 FOLLOWERS</h3>
+            <p>Follow <strong>@blackhat_phantom69</strong> on Instagram and get 25 free followers! Contact us after following.</p>
+            <a href="https://instagram.com/blackhat_phantom69" target="_blank" style="color: #4ecdc4;">👉 @blackhat_phantom69 on Instagram</a>
+        </div>
+
+        <div class="alert">
+            🔐 <strong>We never ask for your password.</strong> Only Session ID (which you can revoke anytime).
+        </div>
+
+        <!-- PLAN BOXES -->
+        <h2 style="margin-bottom: 20px;">📦 Choose Your Plan</h2>
+        <div class="pricing-grid" id="planGrid">
+            <div class="plan-box" data-followers="100" data-price-inr="85" data-price-usdt="1">
+                <div class="plan-name">Starter</div>
+                <div class="plan-followers">100</div>
+                <div class="plan-price-inr">₹85</div>
+                <div class="plan-price-usdt">1 USDT</div>
+                <div class="plan-badge">Popular</div>
+            </div>
+            <div class="plan-box" data-followers="1000" data-price-inr="425" data-price-usdt="5">
+                <div class="plan-name">Basic</div>
+                <div class="plan-followers">1,000</div>
+                <div class="plan-price-inr">₹425</div>
+                <div class="plan-price-usdt">5 USDT</div>
+                <div class="plan-badge">Best Value</div>
+            </div>
+            <div class="plan-box" data-followers="2000" data-price-inr="850" data-price-usdt="10">
+                <div class="plan-name">Standard</div>
+                <div class="plan-followers">2,000</div>
+                <div class="plan-price-inr">₹850</div>
+                <div class="plan-price-usdt">10 USDT</div>
+                <div class="plan-badge"></div>
+            </div>
+            <div class="plan-box" data-followers="5000" data-price-inr="1700" data-price-usdt="20">
+                <div class="plan-name">Pro</div>
+                <div class="plan-followers">5,000</div>
+                <div class="plan-price-inr">₹1,700</div>
+                <div class="plan-price-usdt">20 USDT</div>
+                <div class="plan-badge"></div>
+            </div>
+            <div class="plan-box" data-followers="10000" data-price-inr="3400" data-price-usdt="40">
+                <div class="plan-name">Premium</div>
+                <div class="plan-followers">10,000</div>
+                <div class="plan-price-inr">₹3,400</div>
+                <div class="plan-price-usdt">40 USDT</div>
+                <div class="plan-badge">VIP</div>
+            </div>
+        </div>
+
+        <!-- Order Form -->
+        <div class="card">
+            <h3>📝 Place Your Order</h3>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label>Instagram Username (who receives followers)</label>
+                    <input type="text" id="username" required placeholder="e.g., your_username">
+                </div>
+
+                <div class="form-group">
+                    <label>Session ID (from Instagram cookies)</label>
+                    <input type="text" id="sessionId" required placeholder="Paste your sessionid here">
+                </div>
+
+                <div class="form-group">
+                    <label>Selected Plan</label>
+                    <input type="text" id="selectedPlanDisplay" readonly placeholder="Click a plan above">
+                    <input type="hidden" id="selectedFollowers" value="">
+                    <input type="hidden" id="selectedPriceInr" value="">
+                    <input type="hidden" id="selectedPriceUsdt" value="">
+                </div>
+
+                <div class="form-group">
+                    <label>Email (for order confirmation)</label>
+                    <input type="email" id="email" required placeholder="you@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <select id="paymentMethod">
+                        <option value="USDT">USDT (TRC20) - Recommended</option>
+                        <option value="BTC">Bitcoin (BTC)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn">Place Order</button>
+            </form>
+        </div>
+
+        <div class="success" id="successMessage">
+            ✅ <strong>Order submitted!</strong> We'll start delivery within 24 hours. Check your email for confirmation.
+        </div>
+
+        <!-- PAYMENT SECTION WITH QR CODES -->
+        <h2 style="margin-bottom: 20px;">💳 Payment Methods</h2>
+        <div class="payment-section">
+            <div class="payment-method">
+                <h3>💰 USDT (TRC20)</h3>
+                <div class="qr-code">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=TGiB7531YTHNvZzuz6ii1KGzc47ZXnyttn" alt="USDT QR Code">
+                </div>
+                <div class="address" id="usdtAddress">TGiB7531YTHNvZzuz6ii1KGzc47ZXnyttn</div>
+                <button class="copy-btn" onclick="copyAddress('usdtAddress')">📋 Copy Address</button>
+                <p style="margin-top: 15px; font-size: 12px; color: #aaa;">Network: TRC20<br>Minimum: 1 USDT</p>
+            </div>
+
+            <div class="payment-method">
+                <h3>₿ Bitcoin (BTC)</h3>
+                <div class="qr-code">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=1D4SV9fAdY6WkEsKwJsRrTx9qXj1CDbwHx" alt="Bitcoin QR Code">
+                </div>
+                <div class="address" id="btcAddress">1D4SV9fAdY6WkEsKwJsRrTx9qXj1CDbwHx</div>
+                <button class="copy-btn" onclick="copyAddress('btcAddress')">📋 Copy Address</button>
+                <p style="margin-top: 15px; font-size: 12px; color: #aaa;">Network: BTC<br>Minimum: 0.00001000 BTC</p>
+            </div>
+        </div>
+
+        <!-- Session ID Instructions -->
+        <div class="instructions">
+            <h3>🔐 How to Get Your Session ID</h3>
+            <div class="two-columns">
+                <div>
+                    <p><strong>🔥 Firefox Method (Recommended):</strong></p>
+                    <ol class="steps">
+                        <li>Download Firefox Browser</li>
+                        <li>Log in to instagram.com</li>
+                        <li>Click 3 dots → Extensions → Install <strong>"Cookie Editor"</strong></li>
+                        <li>Open Cookie Editor → search <strong>"sessionid"</strong></li>
+                        <li>Copy the long string</li>
+                    </ol>
+                </div>
+                <div>
+                    <p><strong>🌐 Chrome Method:</strong></p>
+                    <ol class="steps">
+                        <li>Press <strong>F12</strong> → <strong>Application</strong> tab</li>
+                        <li>Storage → Cookies → instagram.com</li>
+                        <li>Copy <strong>"sessionid"</strong> value</li>
+                    </ol>
+                </div>
+            </div>
+            <p style="margin-top: 15px;">⚠️ Your Session ID is safe. You can revoke anytime by logging out of Instagram.</p>
+        </div>
+
+        <div class="footer">
+            <p>Made by Mainak (Class 9) • 100% Genuine • 30% refund if account banned within 7 days</p>
+            <p>Delivery within 24 hours • We never ask for your password</p>
+            <p>© 2026 GodBot — Built with ❤️ by Mainak</p>
+        </div>
+    </div>
+
+    <!-- HELP BOT CHAT -->
+    <div class="chat-bubble" id="chatBubble">
+        <span>💬</span>
+    </div>
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <h4>🤖 GodBot Assistant</h4>
+            <button class="chat-close" id="chatClose">✕</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                👋 Hey! I'm GodBot Assistant.<br><br>
+                I can help you with:<br>
+                • How to get Session ID 📱<br>
+                • Payment methods 💳<br>
+                • Delivery time ⏱️<br>
+                • Refund policy 🔄<br>
+                • Free 25 followers 🎁<br><br>
+                Ask me anything!
+            </div>
+        </div>
+        <div class="quick-buttons" id="quickButtons">
+            <button class="quick-btn" data-question="How to get Session ID?">🔐 Session ID</button>
+            <button class="quick-btn" data-question="How to pay with crypto?">💳 Payment</button>
+            <button class="quick-btn" data-question="How long does delivery take?">⏱️ Delivery</button>
+            <button class="quick-btn" data-question="Free 25 followers?">🎁 Free</button>
+            <button class="quick-btn" data-question="Refund policy?">🔄 Refund</button>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Type your question...">
+            <button class="chat-send" id="chatSend">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // ========== GITHUB CONFIGURATION ==========
+        // ⬇️⬇️⬇️ REPLACE WITH YOUR GITHUB TOKEN ⬇️⬇️⬇️
+        const GITHUB_TOKEN = "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";
+        // ⬆️⬆️⬆️ REPLACE WITH YOUR GITHUB TOKEN ⬆️⬆️⬆️
+        
+        const GITHUB_USER = "hackmainakkuila-tech";
+        const GITHUB_REPO = "GodBot-Commander";
+        const FILE_PATH = "customers.json";
+
+        // ========== HELP BOT RESPONSES ==========
+        function getBotResponse(question) {
+            const q = question.toLowerCase();
+            
+            if (q.includes('session') || q.includes('session id')) {
+                return "🔐 To get your Session ID:\n\n📱 Firefox Method:\n1. Install 'Cookie Editor' extension\n2. Log into Instagram\n3. Open Cookie Editor → search 'sessionid'\n4. Copy the value\n\n🌐 Chrome Method:\n1. Press F12 → Application\n2. Cookies → instagram.com\n3. Copy 'sessionid'\n\nPaste it in the order form!";
+            }
+            
+            if (q.includes('pay') || q.includes('crypto') || q.includes('bitcoin') || q.includes('usdt')) {
+                return "💳 Payment Methods:\n\n💰 USDT (TRC20):\nTGiB7531YTHNvZzuz6ii1KGzc47ZXnyttn\n\n₿ Bitcoin (BTC):\n1D4SV9fAdY6WkEsKwJsRrTx9qXj1CDbwHx\n\n📌 Steps:\n1. Send exact amount to address\n2. Save transaction hash\n3. We'll confirm and start delivery within 24 hours";
+            }
+            
+            if (q.includes('delivery') || q.includes('how long') || q.includes('time')) {
+                return "⏱️ Delivery Time:\n\n• 100 followers: 5-7 days\n• 1,000 followers: 10-14 days\n• 2,000+ followers: 2-3 weeks\n\n⚠️ We deliver slowly to keep your account SAFE! Human-like speed = No ban.";
+            }
+            
+            if (q.includes('free') || q.includes('25')) {
+                return "🎁 FREE 25 FOLLOWERS!\n\nSimply follow @blackhat_phantom69 on Instagram, then contact us with your username. We'll add 25 free followers to your account!";
+            }
+            
+            if (q.includes('refund')) {
+                return "🔄 Refund Policy:\n\n• 30% refund if account banned within 7 days\n• Ban must be caused by Instagram (not your actions)\n• Contact: godbot@outlook.com with order ID";
+            }
+            
+            if (q.includes('price') || q.includes('cost') || q.includes('plan')) {
+                return "📦 Our Plans:\n\n• Starter: 100 followers → ₹85 / 1 USDT\n• Basic: 1,000 followers → ₹425 / 5 USDT\n• Standard: 2,000 → ₹850 / 10 USDT\n• Pro: 5,000 → ₹1,700 / 20 USDT\n• Premium: 10,000 → ₹3,400 / 40 USDT\n\nClick any plan box above to select!";
+            }
+            
+            if (q.includes('safe') || q.includes('risk')) {
+                return "🔒 Safety Guarantee:\n\n✅ We only use Session ID (not password)\n✅ You can revoke anytime by logging out\n✅ Human-like delays protect your account\n✅ 30% refund if banned (not your fault)\n✅ Trusted by Class 9 student Mainak";
+            }
+            
+            if (q.includes('who') || q.includes('mainak')) {
+                return "👨‍💻 About Us:\n\nGodBot was built by Mainak, a Class 9 student who works 15-16 hours daily. This is a genuine project made with AI help. We're honest, not scammers!";
+            }
+            
+            return "💡 I can help with:\n• Session ID instructions\n• Payment methods\n• Delivery time\n• Free 25 followers\n• Refund policy\n• Pricing plans\n• Safety\n\nWhat would you like to know?";
+        }
+
+        // ========== CHAT FUNCTIONALITY ==========
+        const chatBubble = document.getElementById('chatBubble');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatClose = document.getElementById('chatClose');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+        const quickButtons = document.getElementById('quickButtons');
+
+        chatBubble.onclick = () => {
+            chatWindow.style.display = 'flex';
+            chatBubble.style.display = 'none';
+        };
+
+        chatClose.onclick = () => {
+            chatWindow.style.display = 'none';
+            chatBubble.style.display = 'flex';
+        };
+
+        function addMessage(text, isUser = false) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+            msgDiv.textContent = text;
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function sendMessage() {
+            const userMsg = chatInput.value.trim();
+            if (!userMsg) return;
+            
+            addMessage(userMsg, true);
+            chatInput.value = '';
+            
+            setTimeout(() => {
+                const reply = getBotResponse(userMsg);
+                addMessage(reply, false);
+            }, 500);
+        }
+
+        chatSend.onclick = sendMessage;
+        chatInput.onkeypress = (e) => {
+            if (e.key === 'Enter') sendMessage();
+        };
+
+        // Quick buttons
+        document.querySelectorAll('.quick-btn').forEach(btn => {
+            btn.onclick = () => {
+                const question = btn.getAttribute('data-question');
+                addMessage(question, true);
+                setTimeout(() => {
+                    const reply = getBotResponse(question);
+                    addMessage(reply, false);
+                }, 500);
+            };
+        });
+
+        // Show chat after 10 seconds (honest, not aggressive)
+        setTimeout(() => {
+            if (chatWindow.style.display !== 'flex') {
+                // Just highlight the chat bubble, don't auto-open
+                chatBubble.style.animation = 'pulse 0.5s';
+            }
+        }, 10000);
+
+        // ========== PLAN SELECTION ==========
+        let selectedPlan = { followers: 0, priceInr: 0, priceUsdt: 0 };
+
+        document.querySelectorAll('.plan-box').forEach(box => {
+            box.onclick = function() {
+                document.querySelectorAll('.plan-box').forEach(b => b.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                selectedPlan = {
+                    followers: parseInt(this.getAttribute('data-followers')),
+                    priceInr: parseInt(this.getAttribute('data-price-inr')),
+                    priceUsdt: parseInt(this.getAttribute('data-price-usdt'))
+                };
+                
+                document.getElementById('selectedPlanDisplay').value = `${selectedPlan.followers} followers - ₹${selectedPlan.priceInr} (${selectedPlan.priceUsdt} USDT)`;
+                document.getElementById('selectedFollowers').value = selectedPlan.followers;
+                document.getElementById('selectedPriceInr').value = selectedPlan.priceInr;
+                document.getElementById('selectedPriceUsdt').value = selectedPlan.priceUsdt;
+            };
+        });
+
+        // ========== COPY ADDRESS ==========
+        function copyAddress(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => alert('Address copied!'));
+        }
+        window.copyAddress = copyAddress;
+
+        // ========== ORDER SUBMISSION ==========
+        document.getElementById('orderForm').onsubmit = async function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const sessionId = document.getElementById('sessionId').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const paymentMethod = document.getElementById('paymentMethod').value;
+            const followers = parseInt(document.getElementById('selectedFollowers').value);
+            const priceInr = parseInt(document.getElementById('selectedPriceInr').value);
+            const priceUsdt = parseFloat(document.getElementById('selectedPriceUsdt').value);
+            
+            if (!username || !sessionId || !email) {
+                alert('Please fill all fields');
+                return;
+            }
+            
+            if (!followers) {
+                alert('Please select a plan by clicking on a plan box');
+                return;
+            }
+            
+            if (sessionId.length < 10) {
+                alert('Session ID seems too short');
+                return;
+            }
+            
+            const order = {
+                username, session_id: sessionId, email, followers: parseInt(followers),
+                price_inr: priceInr, price_usdt: priceUsdt, payment_method: paymentMethod,
+                status: "pending", delivered: 0, order_id: "ORD_" + Date.now(),
+                created_at: new Date().toISOString(), account_age_days: 30
+            };
+            
+            const btn = document.querySelector('.btn');
+            const originalText = btn.innerText;
+            btn.innerText = "Submitting...";
+            btn.disabled = true;
+            
+            try {
+                const getRes = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${FILE_PATH}`, {
+                    headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
+                });
+                
+                let existing = [];
+                let sha = null;
+                
+                if (getRes.ok) {
+                    const data = await getRes.json();
+                    sha = data.sha;
+                    existing = JSON.parse(atob(data.content));
+                }
+                
+                existing.push(order);
+                
+                const updateRes = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${FILE_PATH}`, {
+                    method: 'PUT',
+                    headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: `Order from ${username}`, content: btoa(JSON.stringify(existing, null, 2)), sha })
+                });
+                
+                if (updateRes.ok) {
+                    const addr = paymentMethod === 'USDT' ? 'TGiB7531YTHNvZzuz6ii1KGzc47ZXnyttn' : '1D4SV9fAdY6WkEsKwJsRrTx9qXj1CDbwHx';
+                    alert(`✅ Order Submitted!\n\nOrder ID: ${order.order_id}\nAmount: ₹${priceInr} / ${priceUsdt} USDT\n\nSend ${paymentMethod} to:\n${addr}\n\nDelivery starts within 24 hours.`);
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('orderForm').reset();
+                    document.getElementById('selectedPlanDisplay').value = '';
+                    document.getElementById('selectedFollowers').value = '';
+                    document.getElementById('selectedPriceInr').value = '';
+                    document.getElementById('selectedPriceUsdt').value = '';
+                    document.querySelectorAll('.plan-box').forEach(b => b.classList.remove('selected'));
+                } else {
+                    throw new Error('GitHub save failed');
+                }
+            } catch(err) {
+                console.error(err);
+                alert('Error submitting order. Contact godbot@outlook.com');
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        };
+    </script>
+</body>
+</html>
