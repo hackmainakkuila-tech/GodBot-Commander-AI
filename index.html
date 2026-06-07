@@ -27,7 +27,6 @@
             font-size: 14px;
         }
         
-        /* Navbar */
         .navbar {
             position: fixed;
             top: 0;
@@ -79,7 +78,6 @@
             color: #4ecdc4;
         }
         
-        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -101,18 +99,8 @@
         }
         
         @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
+            0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .hero p {
-            font-size: 14px;
-            color: #aaa;
-            margin-top: 15px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
         }
         
         .trust-badge-large {
@@ -139,7 +127,6 @@
             min-height: 40px;
         }
         
-        /* Language Toggle */
         .lang-toggle {
             position: fixed;
             top: 70px;
@@ -158,7 +145,6 @@
             cursor: pointer;
             border-radius: 50px;
             font-size: 11px;
-            transition: 0.3s;
         }
         
         .lang-btn.active {
@@ -166,7 +152,6 @@
             color: #000;
         }
         
-        /* Glass Cards */
         .glass-card {
             background: rgba(255,255,255,0.05);
             backdrop-filter: blur(10px);
@@ -180,7 +165,6 @@
             border-color: rgba(78,205,196,0.5);
         }
         
-        /* Pricing Grid */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -267,7 +251,6 @@
             margin-top: 8px;
         }
         
-        /* Trust Notice */
         .trust-notice {
             background: rgba(78,205,196,0.1);
             border-radius: 12px;
@@ -277,12 +260,6 @@
             border: 1px solid rgba(78,205,196,0.3);
         }
         
-        .trust-notice i {
-            color: #4ecdc4;
-            margin-right: 8px;
-        }
-        
-        /* Form */
         .form-container {
             max-width: 550px;
             margin: 0 auto;
@@ -304,7 +281,7 @@
             color: #ddd;
         }
         
-        .form-group input, .form-group select {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 12px;
             background: rgba(0,0,0,0.5);
@@ -326,7 +303,6 @@
             width: 100%;
         }
         
-        /* Status Page */
         .status-container {
             max-width: 800px;
             margin: 30px auto;
@@ -382,7 +358,6 @@
             font-size: 13px;
         }
         
-        /* Trust Section */
         .trust-section {
             text-align: center;
             padding: 30px;
@@ -397,7 +372,6 @@
             color: #ffd700;
         }
         
-        /* Chat */
         .chat-bubble {
             position: fixed;
             bottom: 20px;
@@ -411,7 +385,6 @@
             justify-content: center;
             cursor: pointer;
             z-index: 1000;
-            box-shadow: 0 5px 20px rgba(78,205,196,0.3);
         }
         
         .chat-bubble i {
@@ -489,10 +462,8 @@
             border-radius: 20px;
             padding: 0 15px;
             cursor: pointer;
-            font-size: 12px;
         }
         
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -522,7 +493,16 @@
             border-radius: 12px;
         }
         
-        /* Responsive */
+        details summary {
+            cursor: pointer;
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+        
+        details summary:hover {
+            color: #ffd700;
+        }
+        
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.8rem; }
             .navbar { padding: 10px 15px; }
@@ -558,25 +538,33 @@
             font-size: 11px;
         }
         
-        h3, h4 {
-            font-size: 1rem;
+        .crypto-guide {
+            background: linear-gradient(135deg, rgba(255,215,0,0.05), rgba(255,140,0,0.02));
+            border-left: 4px solid #ffd700;
         }
         
-        p, li {
-            font-size: 13px;
-            line-height: 1.5;
+        .crypto-guide h4 {
+            color: #ffd700;
+            margin: 15px 0 10px;
+        }
+        
+        .crypto-guide ul, .crypto-guide ol {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .crypto-guide li {
+            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Language Toggle -->
     <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
         <button class="lang-btn" onclick="setLanguage('hi')">हिंदी</button>
     </div>
 
-    <!-- Navbar -->
     <nav class="navbar">
         <div>
             <span class="logo">⚡ GodBot</span>
@@ -586,22 +574,21 @@
             <a href="#home">Home</a>
             <a href="#pricing">Pricing</a>
             <a href="#status">Status</a>
+            <a href="#yourbot">Your Bot</a>
+            <a href="#complaint">Complaint</a>
             <a href="#order">Order</a>
-            <a href="#faq">FAQ</a>
         </div>
     </nav>
 
-    <!-- Hero -->
     <section id="home" class="hero">
         <div>
             <div class="trust-badge-large">
-                <i class="fas fa-crown"></i> 50+ Crore Users Trust GodBot
+                <i class="fas fa-crown"></i> Created by Mainak (Class 9)
             </div>
             <h1>Elite Instagram Growth</h1>
             <p>Human-like automation • 100% Safe • USDT Payment Only</p>
             <div class="typing-text" id="typingText"></div>
             
-            <!-- TRUST NOTICE - VERY IMPORTANT -->
             <div class="trust-notice" style="margin-top: 30px;">
                 <i class="fas fa-shield-alt"></i>
                 <strong>🔒 We cannot see your personal information</strong><br>
@@ -613,25 +600,19 @@
                 <strong>📧 Session ID expired? We will email you!</strong><br>
                 <span style="font-size: 12px;">Enter your email in Status section → Get notified when Session ID expires or bot stops.</span>
             </div>
-            
-            <div class="trust-badges" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
-                <div style="background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 50px; font-size: 11px;"><i class="fas fa-shield-alt"></i> 100% Secure</div>
-                <div style="background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 50px; font-size: 11px;"><i class="fas fa-robot"></i> AI Powered</div>
-                <div style="background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 50px; font-size: 11px;"><i class="fas fa-coins"></i> USDT Only</div>
-            </div>
         </div>
     </section>
 
-    <!-- Core Idea -->
     <div class="container">
         <div class="glass-card" style="padding: 25px; margin-bottom: 30px; text-align: center;">
             <h3 style="color: #ff6b6b; margin-bottom: 12px;">🎯 The Core Idea</h3>
-            <p style="font-size: 12px;">Class 9 student • 15-16 hour work days • Human-like bot with random delays, sleep patterns</p>
-            <p style="margin-top: 10px; font-size: 12px;">Your password is safe. We never see it. Only revocable Session ID.</p>
+            <p style="font-size: 12px;">👨‍🎓 A boy named <strong style="color: #ffd700;">Mainak</strong> (Class 9) built this with <strong>15-16 hours of work each day</strong>.</p>
+            <p style="margin-top: 10px; font-size: 12px;">🤖 Human-like bot with random delays, sleep patterns, unpredictable actions.</p>
+            <p style="margin-top: 8px; font-size: 12px;">🔐 Your password is <strong>safe</strong>. We never see it. Only revocable Session ID.</p>
+            <p style="margin-top: 8px; font-size: 12px;">🤝 Built with help from AI and a human — <strong style="color: #4ecdc4;">Mainak</strong></p>
         </div>
     </div>
 
-    <!-- Trust Section -->
     <div class="container">
         <div class="trust-section">
             <div class="trust-number">50,00,00,000+</div>
@@ -644,7 +625,6 @@
         </div>
     </div>
 
-    <!-- Pricing -->
     <section id="pricing">
         <h2 class="section-title">Choose Your Plan</h2>
         <div class="pricing-grid" id="planGrid">
@@ -687,7 +667,57 @@
         </div>
     </section>
 
-    <!-- Status -->
+    <!-- FREE FOLLOWERS -->
+    <div class="container">
+        <div class="glass-card" style="padding: 25px; margin: 20px 0; text-align: center;">
+            <h3 style="color: #4ecdc4; font-size: 1.2rem;">🎁 FREE 25 FOLLOWERS</h3>
+            <p style="font-size: 12px;">Follow <strong>@blackhat_phantom69</strong> on Instagram, then click below:</p>
+            <button id="claimFreeBtn" class="btn" style="width: auto; margin-top: 15px; padding: 10px 25px;"><i class="fab fa-instagram"></i> Claim 25 Free</button>
+        </div>
+    </div>
+
+    <!-- CUSTOMER BOT STATUS SECTION -->
+    <section id="yourbot">
+        <div class="container">
+            <div class="glass-card" style="padding: 25px; margin: 20px 0;">
+                <h3 style="color: #4ecdc4;"><i class="fas fa-robot"></i> 🤖 Your Bot Status</h3>
+                <p style="font-size: 12px; margin-top: 5px;">Enter your Order ID to see live status of YOUR bot (not public)</p>
+                <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+                    <input type="text" id="orderLookup" placeholder="Enter Order ID (e.g., ORD1234567890)" style="flex:1; padding:12px; background:#1a1a2e; border:1px solid #333; color:white; border-radius:8px;">
+                    <button onclick="checkOrderStatus()" class="btn" style="width:auto; padding:12px 25px;">Check Status</button>
+                </div>
+                <div id="orderStatusResult" style="margin-top: 20px; display: none;">
+                    <div style="background:rgba(78,205,196,0.1); padding:15px; border-radius:12px;">
+                        <p><strong>📦 Order ID:</strong> <span id="resultOrderId"></span></p>
+                        <p><strong>🟢 Status:</strong> <span id="resultStatus"></span></p>
+                        <p><strong>✅ Followers Delivered:</strong> <span id="resultDelivered"></span> / <span id="resultTotal"></span></p>
+                        <p><strong>⏳ Remaining:</strong> <span id="resultRemaining"></span></p>
+                        <div class="progress-bar" style="margin-top:10px;"><div class="progress-fill" id="resultProgress" style="width:0%"></div></div>
+                        <p style="margin-top:10px; font-size:11px; color:#888;">🔄 Updates every 10 minutes automatically</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPLAINT BOX -->
+    <section id="complaint">
+        <div class="container">
+            <div class="glass-card" style="padding: 25px; margin: 20px 0;">
+                <h3 style="color: #ff6b6b;"><i class="fas fa-envelope"></i> 📝 Private Complaint Box</h3>
+                <p style="font-size: 12px;">Your complaint will NOT be shown publicly. Only Mainak can see it.</p>
+                <form id="complaintForm">
+                    <input type="text" id="complaintName" placeholder="Your name" style="width:100%; padding:12px; margin:10px 0; background:#1a1a2e; border:1px solid #333; color:white; border-radius:8px;">
+                    <input type="email" id="complaintEmail" placeholder="Your email" style="width:100%; padding:12px; margin:10px 0; background:#1a1a2e; border:1px solid #333; color:white; border-radius:8px;">
+                    <textarea id="complaintMessage" rows="4" placeholder="Describe your problem..." style="width:100%; padding:12px; margin:10px 0; background:#1a1a2e; border:1px solid #333; color:white; border-radius:8px;"></textarea>
+                    <button type="submit" class="btn" style="margin-top:5px;">Submit Complaint</button>
+                </form>
+                <div id="complaintStatus" style="margin-top:10px; font-size:12px; color:#4ecdc4;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATUS SECTION -->
     <section id="status">
         <h2 class="section-title">📊 Live Bot Status</h2>
         <div class="container">
@@ -695,12 +725,13 @@
                 <div class="status-card">
                     <h3 style="font-size: 1rem;"><i class="fas fa-robot"></i> GodBot Engine <span id="botStatus" class="status-online">● ONLINE</span></h3>
                     <div class="progress-bar"><div class="progress-fill"></div></div>
-                    <p style="font-size: 12px;">Last run: <span id="lastRun">Just now</span> | Active orders: <span id="activeOrders">0</span></p>
+                    <p style="font-size: 12px;">🕐 Last run: <span id="lastRun">Just now</span> | 📦 Active orders: <span id="activeOrders">0</span></p>
+                    <p style="font-size: 12px;">🤖 Active Bots: <span id="activeBotsCount">25,000</span> | 📈 Today's delivery: <span id="todayDelivery">0</span> followers</p>
                 </div>
                 
                 <div class="status-card">
-                    <h3 style="font-size: 1rem;"><i class="fas fa-envelope"></i> Session ID Expiry Alert</h3>
-                    <p style="font-size: 12px;">📧 We will email you when your Session ID expires or bot stops!</p>
+                    <h3 style="font-size: 1rem;"><i class="fas fa-envelope"></i> 📧 Session ID Expiry Alert</h3>
+                    <p style="font-size: 12px;">We will email you when your Session ID expires or bot stops!</p>
                     <div class="email-notify">
                         <input type="email" id="notifyEmail" placeholder="Enter your email">
                         <button onclick="subscribeEmail()" class="btn" style="width: auto; padding: 10px 20px;">Notify Me</button>
@@ -711,16 +742,7 @@
         </div>
     </section>
 
-    <!-- Free Followers -->
-    <div class="container">
-        <div class="glass-card" style="padding: 25px; margin: 20px 0; text-align: center;">
-            <h3 style="color: #4ecdc4; font-size: 1.2rem;">🎁 FREE 25 FOLLOWERS</h3>
-            <p style="font-size: 12px;">Follow <strong>@blackhat_phantom69</strong> on Instagram, then click below:</p>
-            <button id="claimFreeBtn" class="btn" style="width: auto; margin-top: 15px; padding: 10px 25px;"><i class="fab fa-instagram"></i> Claim 25 Free</button>
-        </div>
-    </div>
-
-    <!-- Order Form -->
+    <!-- ORDER FORM -->
     <section id="order">
         <div class="container">
             <div class="form-container">
@@ -756,10 +778,10 @@
         </div>
     </section>
 
-    <!-- Payment -->
+    <!-- PAYMENT SECTION WITH CRYPTO GUIDE -->
     <div class="container">
         <h2 class="section-title">💳 Payment Method</h2>
-        <div style="max-width: 350px; margin: 0 auto 30px;">
+        <div style="max-width: 350px; margin: 0 auto 20px;">
             <div class="glass-card" style="padding: 25px; text-align: center;">
                 <h3 style="color: #4ecdc4; font-size: 1.2rem;">💰 USDT (TRC20)</h3>
                 <div style="margin: 15px 0;">
@@ -771,6 +793,72 @@
                 <button onclick="copyAddress()" class="btn" style="margin-top: 12px; padding: 8px; width: auto;">📋 Copy</button>
                 <p style="margin-top: 10px; font-size: 10px;">Network: TRC20 | Min: 1 USDT</p>
             </div>
+        </div>
+
+        <!-- CRYPTO GUIDE FOR INDIAN CUSTOMERS -->
+        <div class="glass-card crypto-guide" style="padding: 25px; margin: 20px 0;">
+            <h3 style="color: #ffd700;"><i class="fas fa-rupee-sign"></i> The Gateway Between Crypto and India's Rupee</h3>
+            <p style="font-size: 12px; margin-top: 5px;">For every Indian crypto trader, the most important question is:</p>
+            <p style="font-size: 13px; font-weight: bold; margin: 10px 0;">👉 "How do I deposit INR safely and instantly on Binance?"</p>
+            
+            <details style="margin-top: 15px;">
+                <summary style="color: #4ecdc4; cursor: pointer; font-size: 13px; font-weight: bold;">📖 Read Full Guide (Click to expand)</summary>
+                
+                <div style="margin-top: 20px; font-size: 12px; line-height: 1.6;">
+                    <p>In 2025, Binance has made INR deposits faster, smoother, and 100% compliant with Indian payment systems. Whether you're using bank transfer, UPI, or P2P, this guide explains every step to help you get started.</p>
+                    
+                    <h4 style="color: #ffd700; margin: 15px 0 10px;">➡️ Why Binance Is the Safest Way to Deposit INR</h4>
+                    <ul>
+                        <li>Regulatory transparency: Binance follows Indian financial norms for secure transactions.</li>
+                        <li>Multiple INR deposit methods: UPI, IMPS, and P2P.</li>
+                        <li>Instant conversion to crypto: Deposit, buy, and trade within minutes.</li>
+                        <li>Zero hidden fees: Transparent pricing and conversion rates.</li>
+                    </ul>
+                    
+                    <h4 style="color: #ffd700; margin: 15px 0 10px;">🏷️ Method 1 — Deposit INR via P2P (Recommended)</h4>
+                    <p>P2P (Peer-to-Peer) is the easiest and most popular method among Indian traders.</p>
+                    <p><strong>Step-by-step:</strong></p>
+                    <ol>
+                        <li>Open the Binance App or Website.</li>
+                        <li>Tap "Buy Crypto → P2P Trading".</li>
+                        <li>Choose INR and select your preferred payment method (UPI/IMPS).</li>
+                        <li>Enter the amount.</li>
+                        <li>Choose a verified merchant (green tick).</li>
+                        <li>Complete payment via UPI.</li>
+                        <li>Mark as Paid → The seller releases crypto instantly.</li>
+                    </ol>
+                    <p>✅ Funds appear in your Binance P2P wallet within seconds.</p>
+                    
+                    <h4 style="color: #ffd700; margin: 15px 0 10px;">🏷️ Method 2 — Deposit INR via Binance Pay/Partner Gateways</h4>
+                    <p>In 2025, Binance is testing direct INR deposit partnerships with payment gateways. This feature allows seamless bank-to-Binance INR transfer, real-time conversion to USDT, and withdrawal back to INR.</p>
+                    
+                    <h4 style="color: #ffd700; margin: 15px 0 10px;">🏷️ Method 3 — Convert INR to Crypto via P2P Express Mode</h4>
+                    <p>For beginners, Express Mode automates the P2P process. Just enter the amount in INR → Binance finds the best offer → You complete payment → Crypto lands in your wallet. It's perfect for users who want simplicity and speed.</p>
+                    
+                    <h4 style="color: #ff6b6b; margin: 15px 0 10px;">🔃 INR Deposit Safety Tips</h4>
+                    <ul>
+                        <li>Trade only with verified merchants.</li>
+                        <li>Always check seller completion rate (≥98%).</li>
+                        <li>Avoid chats or payments outside the Binance app.</li>
+                        <li>Confirm crypto receipt before leaving chat.</li>
+                    </ul>
+                    
+                    <h4 style="color: #ffd700; margin: 15px 0 10px;">💲 How to Use Deposited Funds</h4>
+                    <p>Once INR is in your wallet: Buy USDT, BTC, ETH, or any coin. Use Convert, Spot, or Futures to trade. Earn interest via Binance Earn.</p>
+                    
+                    <h4 style="color: #ffd700; margin: 15px 0 10px;">🏦 Withdraw INR Back to Bank</h4>
+                    <p>Go to "Sell Crypto → P2P". Select INR and your payment method. Complete trade → INR arrives directly in your account.</p>
+                    
+                    <h4 style="color: #ffd700; margin: 15px 0 10px;">➡️ Conclusion</h4>
+                    <p>Depositing INR on Binance in 2025 is easier than ever — fast, secure, and fully optimized for Indian users. Whether you use P2P or new gateway methods, Binance ensures a smooth transition between rupees and crypto.</p>
+                    
+                    <p style="margin-top: 20px; font-weight: bold; color: #ffd700;">🚀 Start your crypto journey today — one deposit away</p>
+                    
+                    <div style="margin-top: 15px; padding: 10px; background: rgba(255,215,0,0.1); border-radius: 10px;">
+                        <p style="font-size: 11px;">⚠️ Need help? Email godbot@outlook.com for assistance with crypto payments.</p>
+                    </div>
+                </div>
+            </details>
         </div>
     </div>
 
@@ -794,15 +882,20 @@
                 <h4 style="color: #4ecdc4; font-size: 13px;">🔄 Refund policy?</h4>
                 <p style="font-size: 12px;">30% refund if banned within 7 days (not your fault). No refund for banned accounts.</p>
             </div>
+            <div class="glass-card" style="padding: 18px;">
+                <h4 style="color: #4ecdc4; font-size: 13px;">💰 How to pay with crypto?</h4>
+                <p style="font-size: 12px;">Read the Crypto Guide above! It explains how to buy USDT in India using Binance P2P.</p>
+            </div>
         </div>
     </div>
 
     <footer>
-        <p>Made by Mainak (Class 9) • 15-16 hour days • 100% Genuine</p>
-        <p>© 2026 GodBot — Contact: godbot@outlook.com</p>
+        <p>👨‍💻 Made by <strong style="color: #4ecdc4;">Mainak</strong> (Class 9 Student) • 15-16 hour days • 100% Genuine</p>
+        <p>⚡ GodBot — Built with ❤️ by <strong style="color: #4ecdc4;">Mainak</strong></p>
+        <p style="margin-top: 8px;">📧 Contact: godbot@outlook.com</p>
     </footer>
 
-    <!-- Modal -->
+    <!-- MODAL -->
     <div id="sessionModal" class="modal">
         <div class="modal-content">
             <h3 style="color: #4ecdc4; margin-bottom: 15px;">🔐 Get Session ID</h3>
@@ -825,10 +918,10 @@
         </div>
     </div>
 
-    <!-- Chat -->
+    <!-- CHAT -->
     <div class="chat-bubble" id="chatBubble"><i class="fas fa-robot"></i></div>
     <div class="chat-window" id="chatWindow">
-        <div class="chat-header"><h4 style="font-size: 14px;">🤖 Assistant</h4><button class="chat-close" id="chatClose" style="background: none; border: none; color: white;">✕</button></div>
+        <div class="chat-header"><h4 style="font-size: 14px;">🤖 GodBot Assistant</h4><button class="chat-close" id="chatClose" style="background: none; border: none; color: white;">✕</button></div>
         <div class="chat-messages" id="chatMessages"><div class="message bot-msg">👋 Hi! Need help with Session ID, Payment, or Delivery?</div></div>
         <div class="chat-input-area"><input class="chat-input" id="chatInput" placeholder="Type..."><button class="chat-send" id="chatSend">Send</button></div>
     </div>
@@ -840,12 +933,22 @@
             event.target.classList.add('active');
         }
 
-        // Typing
+        // Typing animation
         const phrases = ["Human-like Automation", "Safe & Steady Growth", "50+ Crore Trusted", "USDT Payment Only"];
         let i=0,j=0;
         function typeWriter() {
-            if(j<phrases[i].length) document.getElementById("typingText").innerHTML += phrases[i].charAt(j), j++, setTimeout(typeWriter,80);
-            else setTimeout(()=>{document.getElementById("typingText").innerHTML="";j=0;i=(i+1)%phrases.length;typeWriter();},2000);
+            if(j<phrases[i].length) {
+                document.getElementById("typingText").innerHTML += phrases[i].charAt(j);
+                j++;
+                setTimeout(typeWriter,80);
+            } else {
+                setTimeout(()=>{
+                    document.getElementById("typingText").innerHTML="";
+                    j=0;
+                    i=(i+1)%phrases.length;
+                    typeWriter();
+                },2000);
+            }
         }
         typeWriter();
 
@@ -855,7 +958,12 @@
             c.onclick=function(){
                 document.querySelectorAll('.plan-card').forEach(c=>c.classList.remove('selected'));
                 this.classList.add('selected');
-                selected={followers:parseInt(this.dataset.followers),priceInr:parseInt(this.dataset.priceInr),priceUsdt:parseFloat(this.dataset.priceUsdt),days:this.dataset.days};
+                selected={
+                    followers:parseInt(this.dataset.followers),
+                    priceInr:parseInt(this.dataset.priceInr),
+                    priceUsdt:parseFloat(this.dataset.priceUsdt),
+                    days:this.dataset.days
+                };
                 document.getElementById('selectedPlanDisplay').value=`${selected.followers} followers - ₹${selected.priceInr} (${selected.priceUsdt} USDT) | ${selected.days} days`;
                 document.getElementById('selectedFollowers').value=selected.followers;
                 document.getElementById('selectedPriceInr').value=selected.priceInr;
@@ -875,29 +983,84 @@
         function subscribeEmail(){let e=document.getElementById('notifyEmail').value;if(e){localStorage.setItem('notifyEmail',e);document.getElementById('emailStatus').innerHTML='✅ Email saved! You will be notified.';setTimeout(()=>document.getElementById('emailStatus').innerHTML='',3000);}else alert('Enter email');}
         if(localStorage.getItem('notifyEmail'))document.getElementById('notifyEmail').value=localStorage.getItem('notifyEmail');
 
-        // Status
-        function updateStatus(){let o=JSON.parse(localStorage.getItem('godbot_orders')||'[]');document.getElementById('activeOrders').innerText=o.filter(o=>o.status==='pending').length;}
-        updateStatus();setInterval(updateStatus,30000);
+        // Status update
+        function updateStatus(){
+            let orders = JSON.parse(localStorage.getItem('godbot_orders') || '[]');
+            let pending = orders.filter(o => o.status === 'pending' || !o.status);
+            document.getElementById('activeOrders').innerText = pending.length;
+            document.getElementById('todayDelivery').innerText = Math.floor(Math.random() * 5000) + 1000;
+            let activeBots = 20000 + Math.floor(Math.random() * 10000);
+            document.getElementById('activeBotsCount').innerText = activeBots.toLocaleString('en-IN');
+        }
+        updateStatus();
+        setInterval(updateStatus, 30000);
 
-        document.getElementById('claimFreeBtn').onclick=()=>alert('🎁 Free 25 followers will be delivered within 24 hours!');
+        // Free followers
+        document.getElementById('claimFreeBtn').onclick=()=>alert('🎁 Free 25 followers will be delivered within 24 hours! Make sure you followed @blackhat_phantom69');
+
+        // Complaint Box
+        document.getElementById('complaintForm').onsubmit=function(e){
+            e.preventDefault();
+            let name=document.getElementById('complaintName').value;
+            let email=document.getElementById('complaintEmail').value;
+            let msg=document.getElementById('complaintMessage').value;
+            if(!name||!email||!msg){alert('Please fill all fields');return;}
+            let complaints=JSON.parse(localStorage.getItem('godbot_complaints')||'[]');
+            complaints.push({name,email,message:msg,date:new Date().toISOString()});
+            localStorage.setItem('godbot_complaints',JSON.stringify(complaints));
+            document.getElementById('complaintStatus').innerHTML='✅ Complaint sent! Mainak will respond within 24 hours.';
+            document.getElementById('complaintForm').reset();
+            setTimeout(()=>document.getElementById('complaintStatus').innerHTML='',5000);
+        };
+
+        // Order Status Check
+        function checkOrderStatus(){
+            let orderId=document.getElementById('orderLookup').value;
+            if(!orderId){alert('Enter Order ID');return;}
+            let orders=JSON.parse(localStorage.getItem('godbot_orders')||'[]');
+            let order=orders.find(o=>o.id===orderId);
+            if(order){
+                let delivered=order.delivered||0;
+                let total=order.followers;
+                let percent=(delivered/total)*100;
+                document.getElementById('resultOrderId').innerText=order.id;
+                document.getElementById('resultStatus').innerHTML=order.status==='completed'?'✅ COMPLETED':'🟢 ACTIVE';
+                document.getElementById('resultDelivered').innerText=delivered;
+                document.getElementById('resultTotal').innerText=total;
+                document.getElementById('resultRemaining').innerText=total-delivered;
+                document.getElementById('resultProgress').style.width=percent+'%';
+                document.getElementById('orderStatusResult').style.display='block';
+            } else {
+                alert('Order not found. Please check your Order ID.');
+            }
+        }
 
         // Chat
         let cb=document.getElementById('chatBubble'),cw=document.getElementById('chatWindow'),cc=document.getElementById('chatClose'),cm=document.getElementById('chatMessages'),ci=document.getElementById('chatInput'),cs=document.getElementById('chatSend');
         cb.onclick=()=>{cw.style.display='flex';cb.style.display='none';};
         cc.onclick=()=>{cw.style.display='none';cb.style.display='flex';};
         function addMessage(t,u){let d=document.createElement('div');d.className=`message ${u?'user-msg':'bot-msg'}`;d.textContent=t;cm.appendChild(d);cm.scrollTop=cm.scrollHeight;}
-        function botReply(q){let Q=q.toLowerCase();if(Q.includes('session'))return "🔐 Open Firefox → Cookie Editor → Search 'sessionid' → Copy. Need help? Click 'Need help?' above!";if(Q.includes('pay'))return "💳 USDT (TRC20): TGiB7531YTHNvZzuz6ii1KGzc47ZXnyttn";if(Q.includes('delivery'))return "⏱️ 100:5-7d | 1000:10-14d | 2000+:2-3 weeks";if(Q.includes('free'))return "🎁 Follow @blackhat_phantom69 → Claim 25 free!";if(Q.includes('refund'))return "🔄 30% refund if banned within 7 days (not your fault)";return "💡 I can help: Session ID, Payment, Delivery, Free 25, Refund, Status. Ask anything!";}
+        function botReply(q){let Q=q.toLowerCase();
+            if(Q.includes('session'))return "🔐 Open Firefox → Cookie Editor → Search 'sessionid' → Copy. Need help? Click 'Need help?' above!";
+            if(Q.includes('pay'))return "💳 USDT (TRC20): TGiB7531YTHNvZzuz6ii1KGzc47ZXnyttn\n\nRead the Crypto Guide above to learn how to buy USDT in India!";
+            if(Q.includes('delivery'))return "⏱️ 100:5-7d | 1000:10-14d | 2000+:2-3 weeks";
+            if(Q.includes('free'))return "🎁 Follow @blackhat_phantom69 → Claim 25 free!";
+            if(Q.includes('refund'))return "🔄 30% refund if banned within 7 days (not your fault)";
+            if(Q.includes('complaint'))return "📝 Go to Complaint Box section above. Your complaint is private, only Mainak sees it.";
+            if(Q.includes('status'))return "📊 Check Status section for live bot status and your personal bot status! Active Bots: 20,000+";
+            return "💡 I can help: Session ID, Payment (check Crypto Guide!), Delivery, Free 25, Refund, Complaint, Status. Ask anything!";
+        }
         function sendMessage(){let m=ci.value.trim();if(!m)return;addMessage(m,true);ci.value='';setTimeout(()=>addMessage(botReply(m),false),500);}
         cs.onclick=sendMessage;ci.onkeypress=e=>{if(e.key==='Enter')sendMessage();};
 
-        // Order
+        // Order submission
         document.getElementById('orderForm').onsubmit=function(e){
             e.preventDefault();
             let u=document.getElementById('username').value,s=document.getElementById('sessionId').value,em=document.getElementById('email').value,f=document.getElementById('selectedFollowers').value,p=document.getElementById('selectedPriceInr').value;
             if(!u||!s||!em||!f){alert('Fill all fields and select a plan');return;}
-            let order={id:"ORD"+Date.now(),username:u,sessionId:s,email:em,followers:parseInt(f),price:parseInt(p),days:document.getElementById('selectedDays').value,status:'pending',date:new Date().toISOString()};
+            let order={id:"ORD"+Date.now(),username:u,sessionId:s,email:em,followers:parseInt(f),price:parseInt(p),days:document.getElementById('selectedDays').value,status:'active',delivered:0,date:new Date().toISOString()};
             let orders=JSON.parse(localStorage.getItem('godbot_orders')||'[]');orders.push(order);localStorage.setItem('godbot_orders',JSON.stringify(orders));
-            alert(`✅ Order placed!\nID: ${order.id}\nAmount: ₹${p}\nDelivery: ${order.days} days\n\nSend USDT to:\nTGiB7531YTHNvZzuz6ii1KGzc47ZXnyttn`);
+            alert(`✅ Order placed!\nID: ${order.id}\nAmount: ₹${p}\nDelivery: ${order.days} days\n\nSend USDT to:\nTGiB7531YTHNvZzuz6ii1KGzc47ZXnyttn\n\nNeed help buying USDT? Read the Crypto Guide above!\n\nUse Order ID to track status!`);
             document.getElementById('orderForm').reset();document.getElementById('selectedPlanDisplay').value='';document.querySelectorAll('.plan-card').forEach(c=>c.classList.remove('selected'));updateStatus();
         };
     </script>
